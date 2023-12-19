@@ -192,9 +192,7 @@ export function NodeHelpers(state: EditorState, id: NodeId) {
           const targetDeepNodes = nodeHelpers(targetNode.id).descendants(true);
 
           invariant(
-            !targetDeepNodes.includes(newParentNode.id) &&
-            newParentNode.id !== targetNode.id,
-            ERROR_MOVE_TO_DESCENDANT
+            (!targetDeepNodes.includes(newParentNode.id) && newParentNode.id !== targetNode.id), ERROR_MOVE_TO_DESCENDANT
           );
 
           const currentParentNode =
@@ -206,10 +204,7 @@ export function NodeHelpers(state: EditorState, id: NodeId) {
           );
 
           invariant(
-            currentParentNode ||
-            (!currentParentNode && !state.nodes[targetNode.id]),
-            ERROR_DUPLICATE_NODEID
-          );
+            (currentParentNode || (!currentParentNode && !state.nodes[targetNode.id])), ERROR_DUPLICATE_NODEID);
 
           if (currentParentNode.id !== newParentNode.id) {
             if (!parentNodes[currentParentNode.id]) {
