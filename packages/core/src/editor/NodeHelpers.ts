@@ -39,7 +39,7 @@ export function NodeHelpers(state: EditorState, id: NodeId) {
       );
     },
     isTopLevelNode() {
-      return this.isRoot() || this.isLinkedNode();
+      return this.isRoot();
     },
     isDeletable() {
       return !this.isTopLevelNode();
@@ -193,7 +193,7 @@ export function NodeHelpers(state: EditorState, id: NodeId) {
 
           invariant(
             !targetDeepNodes.includes(newParentNode.id) &&
-              newParentNode.id !== targetNode.id,
+            newParentNode.id !== targetNode.id,
             ERROR_MOVE_TO_DESCENDANT
           );
 
@@ -207,7 +207,7 @@ export function NodeHelpers(state: EditorState, id: NodeId) {
 
           invariant(
             currentParentNode ||
-              (!currentParentNode && !state.nodes[targetNode.id]),
+            (!currentParentNode && !state.nodes[targetNode.id]),
             ERROR_DUPLICATE_NODEID
           );
 
